@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: bakong-khqr-support-api
+    env: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: BAKONG_TOKEN
+        sync: false
+      - key: BACKEND_SECRET_KEY
+        generateValue: true
+      - key: MERCHANT_ACCOUNT
+        value: chheak_narat@bkrt
+      - key: MERCHANT_NAME
+        value: NARAT CHHEAK
+      - key: MERCHANT_CITY
+        value: Phnom Penh
+      - key: QR_EXPIRES_SECONDS
+        value: "180"
+      - key: CORS_ORIGINS
+        value: http://localhost:5173,http://localhost:5174
