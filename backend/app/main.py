@@ -38,6 +38,16 @@ def health_check() -> dict[str, str]:
     return {"status": "ok"}
 
 
+@app.get("/")
+def root() -> dict[str, str]:
+    return {
+        "status": "ok",
+        "service": "Portfolio Bakong KHQR API",
+        "health": "/health",
+        "docs": "/docs",
+    }
+
+
 @app.post("/api/khqr/create", response_model=CreateKhqrResponse)
 def create_khqr(
     payload: CreateKhqrRequest,
