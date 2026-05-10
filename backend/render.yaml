@@ -17,6 +17,8 @@ services:
         value: NARAT CHHEAK
       - key: MERCHANT_CITY
         value: Phnom Penh
+      - key: MERCHANT_PHONE
+        value: ""
       - key: QR_EXPIRES_SECONDS
         value: "180"
       - key: CORS_ORIGINS

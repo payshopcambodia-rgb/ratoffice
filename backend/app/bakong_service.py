@@ -107,6 +107,7 @@ class BakongPaymentService:
                 amount=_normalize_amount(amount, currency),
                 currency=currency,
                 store_label="Portfolio Support",
+                phone_number=self.settings.merchant_phone,
                 bill_number=bill_number,
                 terminal_label="Website",
                 static=False,
