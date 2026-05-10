@@ -18,7 +18,7 @@ services:
       - key: MERCHANT_CITY
         value: Phnom Penh
       - key: MERCHANT_PHONE
-        value: ""
+        value: "0975867586"
       - key: QR_EXPIRES_SECONDS
         value: "180"
       - key: CORS_ORIGINS
