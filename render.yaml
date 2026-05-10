@@ -1,11 +1,12 @@
 services:
   - type: web
-    name: bakong-khqr-support-api
-    env: python
+    name: ratoffice
+    runtime: python
     plan: free
     rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
     envVars:
       - key: BAKONG_TOKEN
         sync: false
@@ -20,4 +21,18 @@ services:
       - key: QR_EXPIRES_SECONDS
         value: "180"
       - key: CORS_ORIGINS
-        value: http://localhost:5173,http://localhost:5174
+        value: http://localhost:5173,http://localhost:5174,https://ratoffice.vercel.app
+
+  - type: web
+    name: cambodia-student-portfolio
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://ratoffice.onrender.com
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
